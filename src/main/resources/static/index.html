@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    <title>Vite + Lit</title>
+    <style>
+      :root {
+        font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+        color-scheme: light dark;
+        color: rgba(255, 255, 255, 0.87);
+        background-color: #242424;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 320px;
+        min-height: 100vh;
+        background-color: #282c34;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          color: #213547;
+          background-color: #ffffff;
+        }
+
+        body {
+          background-color: #f7f7f7;
+        }
+      }
+    </style>
+    <script type="module">
+      import { LitElement, css, html } from 'https://unpkg.com/lit@2.5.0?module';
+
+      class MyElement extends LitElement {
+        static get properties() {
+          return {
+            count: { type: Number },
+          };
+        }
+
+        constructor() {
+          super();
+          this.count = 0;
+        }
+
+        render() {
+          return html`
+            <div>
+              <h1>Hello from Lit + Spring Boot</h1>
+              <button @click=${this.increment}>Click me: ${this.count}</button>
+            </div>
+          `;
+        }
+
+        increment() {
+          this.count += 1;
+        }
+
+        static get styles() {
+          return css`
+            div {
+              text-align: center;
+              padding: 2rem;
+              color: white;
+            }
+            h1 {
+              font-size: 2.5rem;
+              font-weight: 600;
+              margin-bottom: 2rem;
+              color: black;
+            }
+            button {
+              padding: 1rem 2rem;
+              font-size: 1.2rem;
+              font-weight: 600;
+              color: white;
+              background: linear-gradient(45deg, #4caf50, #81c784);
+              border: none;
+              border-radius: 50px;
+              cursor: pointer;
+              transition: background 0.3s ease;
+            }
+            button:hover {
+              background: linear-gradient(45deg, #388e3c, #66bb6a);
+            }
+            button:active {
+              transform: scale(0.98);
+            }
+          `;
+        }
+      }
+
+      customElements.define('my-element', MyElement);
+    </script>
+  </head>
+  <body>
+    <my-element></my-element>
+  </body>
+</html>
