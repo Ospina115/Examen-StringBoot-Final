@@ -2,11 +2,14 @@ package com.example.proyect.demo.domain.entities;
 
 import java.sql.Date;
 
-
-
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,6 +18,10 @@ import jakarta.persistence.Table;
 public class Persona {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
     @Column(name = "numDocumento")
     private int numDocumento;
 
@@ -26,4 +33,8 @@ public class Persona {
 
     @Column(name = "fechaRegistro")
     private Date fechaRegistro;
+
+    @ManyToOne
+    @JoinColumn(name = "idSucursal")
+    private Sucursal sucursal;
 }
