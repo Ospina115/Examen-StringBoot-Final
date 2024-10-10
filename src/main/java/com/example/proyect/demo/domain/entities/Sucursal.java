@@ -12,7 +12,8 @@ import jakarta.persistence.Table;
 public class Sucursal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idSuc;
+    @Column(name = "idSuc")
+    private Long idSuc;
 
     @Column(name = "nombreSuc",length = 50)
     private String nombreSuc;

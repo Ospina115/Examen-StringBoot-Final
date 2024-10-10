@@ -12,7 +12,8 @@ import jakarta.persistence.Table;
 public class TipoEmpresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "descripcion")
     private String descripcion;

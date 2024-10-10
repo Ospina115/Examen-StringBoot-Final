@@ -12,7 +12,8 @@ import jakarta.persistence.Table;
 public class Ciudad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "id")
+    private Long id;
 
     @Column(length = 50)
     private String nombre;

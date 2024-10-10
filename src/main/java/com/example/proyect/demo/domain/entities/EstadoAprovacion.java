@@ -12,7 +12,8 @@ import jakarta.persistence.Table;
 public class EstadoAprovacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "id")
+    private Long id;
 
     @Column(length = 50)
     private String nombre;

@@ -14,7 +14,7 @@ public class EstadoServicioOrden {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(length = 100, name = "nombre")
     private String nombre;

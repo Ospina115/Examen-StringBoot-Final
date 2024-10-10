@@ -12,7 +12,8 @@ import jakarta.persistence.Table;
 public class Insumo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "codInterno", length = 50)
     private String codInterno;
