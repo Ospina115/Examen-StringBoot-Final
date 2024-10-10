@@ -24,10 +24,10 @@ public class AprovacionServicio {
     private int numOrden;
 
     @Column(name = "idCliente")
-    private int idCliente;
+    private Long idCliente;
 
     @Column(name = "idServicio")
-    private int idServicio;
+    private Long idServicio;
 
     @Column(length = 100, name = "hallazgo")
     private String hallazgo;

@@ -21,14 +21,14 @@ public class DetalleOrdenTrabajo {
     private Long id;
 
     @Column(name = "idOrdenTrabajo")
-    private int idOrdenTrabajo;
+    private Long idOrdenTrabajo;
 
     @Column(name = "idServicioAsignado")
-    private int idServicioAsignado;
+    private Long idServicioAsignado;
 
     @Column(name = "fecha")
     private Date fecha;
 
     @Column(name = "idEstadoOrdenServicio")
-    private int idEstadoOrdenServicio;
+    private Long idEstadoOrdenServicio;
 }

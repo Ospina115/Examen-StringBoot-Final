@@ -11,11 +11,11 @@ public class EmpresaServicio {
 
     // @Id
     // @Column(name = "idSucursal")
-    // private int idSucursal;
+    // private Long idSucursal;
 
     // @Id
     // @Column(name = "idServicio")
-    // private int idServicio;
+    // private Long idServicio;
 
     // @Column(precision = 10, scale = 2, name = "valorServicio")
     // private double valorServicio;

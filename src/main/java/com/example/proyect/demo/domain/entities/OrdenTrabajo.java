@@ -29,9 +29,9 @@ public class OrdenTrabajo {
     private LocalTime horaAsignacion;
 
     @Column(name = "idEmpleado")
-    private int idEmpleado;
+    private Long idEmpleado;
 
     @Column(name = "numOrden")
-    private int numOrden;
+    private Long numOrden;
     
 }

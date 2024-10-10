@@ -11,22 +11,15 @@ import jakarta.persistence.Table;
 public class PersonaInsumo {
 
     @Id
-    @Column(name = "idServicio")
-    private int idServicio;
+    @Column(name = "idInsumo")
+    private int idInsumo;
 
     @Id
-    @Column(name = "idConsumo")
-    private int idConsumo;
+    @Column(name = "numDoc")
+    private int numDoc;
 
-    @Column(name = "valorUnitario")
-    private double valorUnitario;
+    @Column(name = "idServicio")
+    private Long idServicio;
 
-    @Column(name = "stock")
-    private int stock;
 
-    @Column(name = "stockMin")
-    private long stockMin;
-
-    @Column(name = "stockMax")
-    private long stockMax;
 }
