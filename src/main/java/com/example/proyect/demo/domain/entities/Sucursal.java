@@ -3,6 +3,8 @@ package com.example.proyect.demo.domain.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,9 +26,10 @@ public class Sucursal {
     private String nombreSuc;
 
     @ManyToOne
-    @JoinColumn(name = "idCiudad")
+    @JoinColumn(name = "id_direccion")
     private Direccion direccion;
 
     @OneToMany(mappedBy = "sucursal")
+    @JsonIgnore
     private List<Persona> persona;
 }

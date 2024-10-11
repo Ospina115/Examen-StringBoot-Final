@@ -3,6 +3,8 @@ package com.example.proyect.demo.domain.entities;
 import java.sql.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -10,24 +12,18 @@ import jakarta.persistence.OneToMany;
 //import jakarta.persistence.OneToMany;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 @Entity
 @Table (name = "persona")
-
+@Data
 public class Persona {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
-    @Column(name = "numDocumento")
-    @NotNull
-    private int numDocumento;
+    @Column(name = "num_Doc")
+    private int numDoc;
 
     @Column(name = "nombre", length = 50)
     @NotNull
@@ -36,17 +32,22 @@ public class Persona {
     @Column(name = "apellido", length = 50)
     private String apellido;
 
-    @Column(name = "fechaRegistro")
+    @Column(name = "fecha_registro")
     private Date fechaRegistro;
 
     @ManyToOne
-    @JoinColumn(name = "idSucursal")
+    @JoinColumn(name = "id_sucursal")
     private Sucursal sucursal;
 
     @ManyToOne
-    @JoinColumn(name = "idDireccion")
+    @JoinColumn(name = "id_direccion")
     private Direccion direccion;
 
+    // @ManyToOne
+    // @JoinColumn(name = "tipo_persona")
+    // private TipoPersona tipoPersona;
+
     @OneToMany(mappedBy = "persona")
+    @JsonIgnore
     private List<TelPersona> telPersona;
 }

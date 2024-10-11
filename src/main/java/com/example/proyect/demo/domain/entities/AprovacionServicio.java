@@ -23,10 +23,10 @@ public class AprovacionServicio {
     @Column(name = "numOrden")
     private int numOrden;
 
-    @Column(name = "idCliente")
+    @Column(name = "id_cliente")
     private Long idCliente;
 
-    @Column(name = "idServicio")
+    @Column(name = "id_servicio")
     private Long idServicio;
 
     @Column(length = 100, name = "hallazgo")
@@ -35,6 +35,6 @@ public class AprovacionServicio {
     @Column(length = 100, name = "solucion")
     private String solucion;
 
-    @Column(name = "idEstadoAprobacion")
+    @Column(name = "id_estado_aprob")
     private int idEstadoAprobacion;
 }

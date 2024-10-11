@@ -9,6 +9,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tipo_empresa")
 public class TipoEmpresa {
@@ -21,6 +23,7 @@ public class TipoEmpresa {
     private String descripcion;
 
     @OneToMany(mappedBy = "tipoEmpresa")
+    @JsonIgnore
     private List<Empresa> empresas;
 
 }

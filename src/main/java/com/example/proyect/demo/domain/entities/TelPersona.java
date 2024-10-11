@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table (name = "telpersona")
+@Table (name = "tel_persona")
 
 public class TelPersona {
 
@@ -26,6 +26,10 @@ public class TelPersona {
     private int numero;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "num_doc")
     private Persona persona;
+
+    // @ManyToOne
+    // @JoinColumn(name = "tipo_tel")
+    // private TipoTelefono  tipoTelefono;
 }

@@ -2,6 +2,8 @@ package com.example.proyect.demo.domain.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,9 +27,10 @@ public class Ciudad {
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "idRegion")
+    @JoinColumn(name = "id_region")
     private Region region;
 
     @OneToMany(mappedBy = "ciudad")
+    @JsonIgnore
     private List<Direccion> direccion;
 }
