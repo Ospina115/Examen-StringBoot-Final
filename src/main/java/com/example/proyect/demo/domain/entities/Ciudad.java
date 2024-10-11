@@ -29,5 +29,5 @@ public class Ciudad {
     private Region region;
 
     @OneToMany(mappedBy = "ciudad")
-    private List<Sucursal> sucursal;
+    private List<Direccion> direccion;
 }

@@ -25,7 +25,7 @@ public class Sucursal {
 
     @ManyToOne
     @JoinColumn(name = "idCiudad")
-    private Ciudad ciudad;
+    private Direccion direccion;
 
     @OneToMany(mappedBy = "sucursal")
     private List<Persona> persona;
