@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    height: 100vh;
+}
+.container {
+    display: flex;
+    width: 100%;
+}
+.left {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./PREST.png');
+    background-position: left;
+}
+
+.right {
+    background-color: #8b61c2;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 20px;
+}
+.right h1 {
+    font-size: 6em;
+    text-align: center;
+    margin-top: 0;
+}
+.form-group{
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+}
+select{
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    margin-bottom: 10px;
+    color: black;
+    margin-right: 10px; 
+}
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+.form-group input::placeholder {
+    color: black;
+}
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.buttons button {
+    padding: 15px 30px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+.buttons .create-account {
+    background-color: #ffcc00;
+    color: black;
+}
+.buttons .sign-in {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+.error {
+    border: 1px solid red;
+}
