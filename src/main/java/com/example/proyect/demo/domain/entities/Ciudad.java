@@ -33,4 +33,8 @@ public class Ciudad {
     @OneToMany(mappedBy = "ciudad")
     @JsonIgnore
     private List<Direccion> direccion;
+
+    @OneToMany(mappedBy = "ciudad")
+    @JsonIgnore
+    private List<Sucursal> sucursales;
 }

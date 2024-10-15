@@ -43,11 +43,11 @@ public class Persona {
     @JoinColumn(name = "id_direccion")
     private Direccion direccion;
 
-    // @ManyToOne
-    // @JoinColumn(name = "tipo_persona")
-    // private TipoPersona tipoPersona;
-
     @OneToMany(mappedBy = "persona")
     @JsonIgnore
     private List<TelPersona> telPersona;
+
+    @OneToMany(mappedBy = "persona")
+    @JsonIgnore
+    private List<EmailPersona> emailPersonas;
 }

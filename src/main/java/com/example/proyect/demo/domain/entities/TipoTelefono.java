@@ -2,8 +2,6 @@ package com.example.proyect.demo.domain.entities;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,12 +18,11 @@ public class TipoTelefono {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "num")
     private String numero;
 
-    // @OneToMany(mappedBy = "tipo_telefono")
-    // @JsonIgnore
-    // private List<TelPersona> telPersona;
+    @OneToMany(mappedBy = "tipoTelefono") 
+    private List<TipoPersona> tipoPersonas;
 }

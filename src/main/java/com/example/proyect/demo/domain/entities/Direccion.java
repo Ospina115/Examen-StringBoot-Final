@@ -38,10 +38,11 @@ public class Direccion {
     @JoinColumn(name = "id_ciudad")
     private Ciudad ciudad;
 
-    @OneToMany(mappedBy = "direccion")
-    @JsonIgnore
-    private List<Sucursal> sucursal;
     
+    
+    @ManyToOne
+    @JoinColumn(name = "id_sucursal")
+    private Sucursal sucursal;
 
 
 

@@ -14,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.sql.Date;
 
 @Entity
 @Table(name = "sucursal")
@@ -22,14 +23,32 @@ public class Sucursal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSuc;
 
-    @Column(name = "nombreSuc",length = 50)
+    @Column(name = "nombreSuc", length = 50)
     private String nombreSuc;
 
+    @Column(name = "nit", length = 50)
+    private String nit;
+
+    @Column(name = "fecha_creacion")
+    private Date fechaCreacion; 
+
     @ManyToOne
-    @JoinColumn(name = "id_direccion")
-    private Direccion direccion;
+    @JoinColumn(name = "id_ciudad")
+    private Ciudad ciudad;
+
+    @ManyToOne
+    @JoinColumn(name = "id_empresa")
+    private Empresa empresa;
 
     @OneToMany(mappedBy = "sucursal")
     @JsonIgnore
-    private List<Persona> persona;
+    private List<Persona> personas; 
+
+    @OneToMany(mappedBy = "sucursal")
+    @JsonIgnore
+    private List<Direccion> direcciones;
+
+    @OneToMany(mappedBy = "sucursal")
+    @JsonIgnore
+    private List<EmpresaServicio> empresaServicios;
 }
