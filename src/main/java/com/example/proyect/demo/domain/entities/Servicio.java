@@ -36,4 +36,12 @@ public class Servicio {
     @OneToMany(mappedBy = "servicio")
     @JsonIgnore
     private List<DetalleOrden> detalleOrdens;
+
+    @OneToMany(mappedBy = "servicio")
+    @JsonIgnore
+    private List<DetalleOrdenTrabajo> detalleOrdenTrabajos;
+
+    @OneToMany(mappedBy = "servicio")
+    @JsonIgnore
+    private List<AprovacionServicio> aprovacionServicios;
 }

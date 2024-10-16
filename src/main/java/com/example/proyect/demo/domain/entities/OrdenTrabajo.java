@@ -3,9 +3,14 @@ package com.example.proyect.demo.domain.entities;
 import java.sql.Date;
 import java.time.LocalTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,10 +33,22 @@ public class OrdenTrabajo {
     @Column(name = "horaAsignacion")
     private LocalTime horaAsignacion;
 
-    @Column(name = "idEmpleado")
-    private Long idEmpleado;
+    @ManyToOne
+    @JoinColumn(name = "idEmpleado")
+    private Persona persona;
 
     @Column(name = "numOrden")
     private Long numOrden;
     
+    @ManyToOne
+    @JoinColumn(name = "nro_orden")
+    private OrdenServicio ordenServicio;
+
+    @OneToMany(mappedBy = "ordenTrabajo")
+    @JsonIgnore
+    private List<AprovacionServicio> aprovacionServicios;
+
+    @OneToMany(mappedBy = "ordenTrabajo")
+    @JsonIgnore
+    private List<DetalleOrdenTrabajo> detalleOrdenTrabajos;
 }

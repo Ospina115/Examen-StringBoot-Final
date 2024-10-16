@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -20,14 +22,16 @@ public class AprovacionServicio {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "numOrden")
-    private int numOrden;
+    @ManyToOne
+    @JoinColumn(name = "numOrden")
+    private OrdenTrabajo ordenTrabajo;
 
     @Column(name = "id_cliente")
     private Long idCliente;
 
-    @Column(name = "id_servicio")
-    private Long idServicio;
+    @ManyToOne
+    @JoinColumn(name = "id_servicio")
+    private Servicio servicio;
 
     @Column(length = 100, name = "hallazgo")
     private String hallazgo;
@@ -35,6 +39,7 @@ public class AprovacionServicio {
     @Column(length = 100, name = "solucion")
     private String solucion;
 
-    @Column(name = "id_estado_aprob")
-    private int idEstadoAprobacion;
+    @ManyToOne
+    @JoinColumn(name = "id_estado_aprob")
+    private EstadoAprovacion estadoAprovacion;
 }

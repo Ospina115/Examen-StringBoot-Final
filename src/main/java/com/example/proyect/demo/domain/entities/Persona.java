@@ -66,4 +66,8 @@ public class Persona {
     @OneToMany(mappedBy = "persona")
     @JsonIgnore
     private List<OrdenServicio> ordenServicio;
+
+    @OneToMany(mappedBy = "persona")
+    @JsonIgnore
+    private List<OrdenTrabajo> ordenTrabajos;
 }

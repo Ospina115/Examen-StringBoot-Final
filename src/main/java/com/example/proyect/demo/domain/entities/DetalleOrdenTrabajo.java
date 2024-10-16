@@ -5,6 +5,8 @@ import java.sql.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import jakarta.persistence.GeneratedValue;
@@ -20,15 +22,22 @@ public class DetalleOrdenTrabajo {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "idOrdenTrabajo")
-    private Long idOrdenTrabajo;
+    @ManyToOne
+    @JoinColumn(name = "idOrdenTrabajo")
+    private OrdenTrabajo ordenTrabajo;
 
-    @Column(name = "idServicioAsignado")
-    private Long idServicioAsignado;
+    @ManyToOne
+    @JoinColumn(name = "idServicioAsignado")
+    private Servicio servicio;
 
     @Column(name = "fecha")
     private Date fecha;
 
-    @Column(name = "idEstadoOrdenServicio")
-    private Long idEstadoOrdenServicio;
+    @ManyToOne
+    @JoinColumn(name = "idEstadoOrdenServicio")
+    private EstadoServicioOrden estadoServicioOrden;
+
+    @ManyToOne
+    @JoinColumn(name = "id_orden_servicio")
+    private OrdenServicio ordenServicio;
 }

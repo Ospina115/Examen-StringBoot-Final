@@ -1,6 +1,8 @@
 package com.example.proyect.demo.domain.entities;
 
 import java.sql.Date;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -36,5 +39,11 @@ public class OrdenServicio {
     @JoinColumn(name = "idempleado")
     private Persona persona;
 
-    
+    @OneToMany(mappedBy = "ordenServicio")
+    @JsonIgnore
+    private List<OrdenTrabajo> ordenTrabajos;
+
+    @OneToMany(mappedBy = "ordenServicio")
+    @JsonIgnore
+    private List<DetalleOrdenTrabajo> detalleOrdenTrabajos;
 }
