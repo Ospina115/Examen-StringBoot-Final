@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <form method="post" action="/api/v1/login">
+            <h1>Ingreso</h1>
+            <p>
+                <label for="username" class="sr-only"></label>
+                <input type="text" id="username" name="username" placeholder="Usuario" required autofocus>
+            </p>    
+            <p>
+                <label for="password" class="sr-only"></label>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            </p>
+            <input name="csrf" type="hidden" value="mUaWtpH2ivcqw01dIEsus-lEGWFHbsmthYx8FQ5g-2V8exzqiWjhfSS75QH8X5pQmYahNxxNAB1Wf2A5ukfdjhYxtqmwNpE" />
+            <button type="submit" class="ingreso">Ingresar</button>
+            <button type="sumbit" class="crear">Crear Cuenta</button>
+        </form>
+    </div>
+</body>
+</html>
