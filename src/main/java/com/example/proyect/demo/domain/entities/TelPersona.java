@@ -29,7 +29,7 @@ public class TelPersona {
     @JoinColumn(name = "num_doc")
     private Persona persona;
 
-    // @ManyToOne
-    // @JoinColumn(name = "tipo_tel")
-    // private TipoTelefono  tipoTelefono;
+    @ManyToOne
+    @JoinColumn(name = "tipo_tel")
+    private TipoTelefono tipoTelefonos;
 }

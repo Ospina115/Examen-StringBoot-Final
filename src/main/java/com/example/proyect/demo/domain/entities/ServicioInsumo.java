@@ -2,8 +2,9 @@ package com.example.proyect.demo.domain.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -11,12 +12,12 @@ import jakarta.persistence.Table;
 public class ServicioInsumo {
 
     @Id
-    @Column(name = "idServicio")
-    private Long idServicio;
+    @Column(name = "id_servicio")
+    private int idServicio;
 
     @Id
-    @Column(name = "idConsumo")
-    private Long idConsumo;
+    @Column(name = "id_insumo")
+    private int idInsumo;
 
     @Column(name = "valorUnitario")
     private double valorUnitario;
@@ -30,4 +31,11 @@ public class ServicioInsumo {
     @Column(name = "stockMax")
     private long stockMax;
 
+    @ManyToOne
+    @JoinColumn(name = "id_servicio", referencedColumnName = "id", insertable = false, updatable = false)
+    private Servicio servicio;
+
+    @ManyToOne
+    @JoinColumn(name = "id_insumo", referencedColumnName = "id", insertable = false, updatable = false)
+    private Insumo insumo;
 }

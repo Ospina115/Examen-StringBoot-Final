@@ -25,9 +25,15 @@ public class Servicio {
     @Column(name = "requiereInsumo")
     private boolean requiereInsumo;
 
-    @OneToMany(mappedBy = "servicio") 
+    @OneToMany(mappedBy = "servicio")
     @JsonIgnore
-    private List<EmpresaServicio> empresaServicios;
+    private List<PersonaInsumo> personaInsumos;
 
-    
+    @OneToMany(mappedBy = "servicio")
+    @JsonIgnore
+    private List<ServicioInsumo> servicioInsumos;
+
+    @OneToMany(mappedBy = "servicio")
+    @JsonIgnore
+    private List<DetalleOrden> detalleOrdens;
 }

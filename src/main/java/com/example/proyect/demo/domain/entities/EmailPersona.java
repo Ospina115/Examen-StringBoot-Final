@@ -28,4 +28,8 @@ public class EmailPersona {
     // @OneToMany(mappedBy = "persona")
     // @JsonIgnore
     // private List<Persona> personas;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_email")
+    private TipoEmail tipoEmails;
 }

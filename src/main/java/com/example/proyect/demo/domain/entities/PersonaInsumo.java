@@ -3,6 +3,8 @@ package com.example.proyect.demo.domain.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 
@@ -11,15 +13,18 @@ import jakarta.persistence.Table;
 public class PersonaInsumo {
 
     @Id
-    @Column(name = "idInsumo")
-    private int idInsumo;
+    @Column(name = "id")
+    private int id;
+    
+    @ManyToOne
+    @JoinColumn(name = "idInsumo")
+    private Insumo insumo;
 
-    @Id
-    @Column(name = "numDoc")
-    private int numDoc;
-
-    @Column(name = "idServicio")
-    private Long idServicio;
-
-
+    @ManyToOne
+    @JoinColumn(name = "numDoc")
+    private Persona persona;
+    
+    @ManyToOne
+    @JoinColumn(name = "idServicio")
+    private Servicio servicio;
 }

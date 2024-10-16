@@ -50,4 +50,20 @@ public class Persona {
     @OneToMany(mappedBy = "persona")
     @JsonIgnore
     private List<EmailPersona> emailPersonas;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_persona")
+    private TipoPersona tipoPersonas;
+
+    @OneToMany(mappedBy = "persona")
+    @JsonIgnore
+    private List<PersonaInsumo> PersonaInsumos;
+
+    @OneToMany(mappedBy = "personas")
+    @JsonIgnore
+    private List<OrdenServicio> ordenServicios;
+
+    @OneToMany(mappedBy = "persona")
+    @JsonIgnore
+    private List<OrdenServicio> ordenServicio;
 }
