@@ -28,13 +28,13 @@ public class PaisImpl implements IPaisService{
         return paisRepository.findById(id);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
     public Pais save(Pais pais) {
         return paisRepository.save(pais);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
     public Optional<Pais> update(int id, Pais pais) {
         Optional<Pais> paisOld = paisRepository.findById(id);
@@ -48,7 +48,7 @@ public class PaisImpl implements IPaisService{
         return Optional.empty();
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
     public Optional<Pais> delete(int id) {
        Optional<Pais> paisOptional = paisRepository.findById(id);

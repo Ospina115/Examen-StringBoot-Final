@@ -20,7 +20,7 @@ import com.example.proyect.demo.domain.entities.Pais;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/pais")
+@RequestMapping("/paises")
 public class PaisController {
 
     @Autowired
@@ -37,7 +37,7 @@ public class PaisController {
         return paisOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<?> create(@RequestBody Pais pais) {
         return ResponseEntity.status(HttpStatus.CREATED).body(paisService.save(pais));
     }

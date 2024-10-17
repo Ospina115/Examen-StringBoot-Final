@@ -1,5 +1,5 @@
-package com.example.proyect.demo.infrastructure.web;
+// package com.example.proyect.demo.infrastructure.web;
 
-public class WebController {
+// public class WebController {
 
-}
+// }
