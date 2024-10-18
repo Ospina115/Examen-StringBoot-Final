@@ -9,9 +9,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 @Entity
 @Table(name = "direccion")
+@Data
 public class Direccion {
 
     @Id
@@ -32,13 +34,4 @@ public class Direccion {
     @ManyToOne
     @JoinColumn(name = "id_ciudad")
     private Ciudad ciudad;
-
-    
-    
-    @ManyToOne
-    @JoinColumn(name = "id_sucursal")
-    private Sucursal sucursal;
-
-
-
 }
