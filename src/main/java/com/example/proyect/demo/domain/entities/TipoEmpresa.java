@@ -7,12 +7,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Data;
+
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tipo_empresa")
+@Data
 public class TipoEmpresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
