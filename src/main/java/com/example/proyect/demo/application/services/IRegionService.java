@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.proyect.demo.domain.entities.Region;
 
-
 @Service
 public interface IRegionService {
 

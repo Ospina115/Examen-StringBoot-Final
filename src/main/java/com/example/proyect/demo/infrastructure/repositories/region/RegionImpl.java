@@ -45,11 +45,11 @@ public class RegionImpl implements IRegionService {
 
     @Override
     public Optional<Region> delete(int id) {
-        Optional<Region> producOptional = repository.findById(id);
-        producOptional.ifPresent(productDb -> {
+        Optional<Region> productoOptional = repository.findById(id);
+        productoOptional.ifPresent(productDb -> {
             repository.delete(productDb);
         });
-        return producOptional;
+        return productoOptional;
     }
 
 }
