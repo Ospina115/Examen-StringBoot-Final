@@ -22,16 +22,19 @@ public class RegionImpl implements IRegionService {
         return (List<Region>) repository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<Region> findById(int id) {
         return repository.findById(id);
     }
 
+    @Transactional
     @Override
     public Region save(Region region) {
         return repository.save(region);
     }
 
+    @Transactional
     @Override
     public Optional<Region> update(int id, Region region) {
         Optional<Region> regionOptional = repository.findById(id);
@@ -43,6 +46,7 @@ public class RegionImpl implements IRegionService {
         return regionOptional;
     }
 
+    @Transactional
     @Override
     public Optional<Region> delete(int id) {
         Optional<Region> productoOptional = repository.findById(id);
