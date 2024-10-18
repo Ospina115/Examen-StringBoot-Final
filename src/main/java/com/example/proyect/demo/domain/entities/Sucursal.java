@@ -14,10 +14,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Data;
+
 import java.sql.Date;
 
 @Entity
 @Table(name = "sucursal")
+@Data
 public class Sucursal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,10 +46,6 @@ public class Sucursal {
     @OneToMany(mappedBy = "sucursal")
     @JsonIgnore
     private List<Persona> personas; 
-
-    @OneToMany(mappedBy = "sucursal")
-    @JsonIgnore
-    private List<Direccion> direcciones;
 
     @OneToMany(mappedBy = "sucursal")
     @JsonIgnore
