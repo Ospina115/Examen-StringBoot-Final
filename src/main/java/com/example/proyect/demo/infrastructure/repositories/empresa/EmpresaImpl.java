@@ -21,16 +21,19 @@ public class EmpresaImpl implements IEmpresaService {
         return (List<Empresa>) repository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<Empresa> findById(int id) {
         return repository.findById(id);
     }
 
+    @Transactional
     @Override
     public Empresa save(Empresa empresa) {
         return repository.save(empresa);
     }
 
+    @Transactional
     @Override
     public Optional<Empresa> update(int id, Empresa empresa) {
         Optional<Empresa> empresaOptional = repository.findById(id);
@@ -43,6 +46,7 @@ public class EmpresaImpl implements IEmpresaService {
         return empresaOptional;
     }
 
+    @Transactional
     @Override
     public Optional<Empresa> delete(int id) {
         Optional<Empresa> productoOptional = repository.findById(id);

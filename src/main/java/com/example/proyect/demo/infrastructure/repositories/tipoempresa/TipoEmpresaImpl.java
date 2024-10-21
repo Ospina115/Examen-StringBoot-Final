@@ -22,16 +22,19 @@ public class TipoEmpresaImpl implements ITipoEmpresaService {
         return (List<TipoEmpresa>) repository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<TipoEmpresa> findById(int id) {
         return repository.findById(id);
     }
 
+    @Transactional
     @Override
     public TipoEmpresa save(TipoEmpresa tipoEmpresa) {
         return repository.save(tipoEmpresa);
     }
 
+    @Transactional
     @Override
     public Optional<TipoEmpresa> update(int id, TipoEmpresa tipoEmpresa) {
         Optional<TipoEmpresa> tipoEmpresaOptional = repository.findById(id);
@@ -43,6 +46,7 @@ public class TipoEmpresaImpl implements ITipoEmpresaService {
         return tipoEmpresaOptional;
     }
     
+    @Transactional
     @Override
     public Optional<TipoEmpresa> delete(int id) {
         Optional<TipoEmpresa> productoOptional = repository.findById(id);
