@@ -10,10 +10,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 @Entity
 @Table (name = "tel_persona")
-
+@Data
 public class TelPersona {
 
     @Id

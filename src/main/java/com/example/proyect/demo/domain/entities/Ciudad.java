@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity
@@ -28,6 +29,7 @@ public class Ciudad {
 
     @ManyToOne
     @JoinColumn(name = "id_region")
+    @NotNull
     private Region region;
 
     @OneToMany(mappedBy = "ciudad")
