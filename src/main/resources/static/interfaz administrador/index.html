@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz de Registro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="" alt="logo">
+        <h1>MENU ADMINISTRADOR</h1>
+        <img src="" alt="user-icon">
+    </header>
+    <div class="container">
+        <div class="left">
+            <button>
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Ciudades</span>
+            </button>
+            <button>
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Paises</span>
+            </button>
+            <button>
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Regiones</span>
+            </button>
+            <button>
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Eliminar Insumos</span>
+            </button>
+            <button>
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Informacion Proveedores</span>
+            </button>
+        </div>
+        <div class="right">
+            <h2>Por favor <br>Selecciona una opcion</h2>
+        </div>
+    </div>
+
+    <script>
+        const apiUrl = 'http://localhost:8080/api/v1/ciudades';
+
+        // Función para listar ciudades
+        async function listCiudades() {
+            const response = await fetch(apiUrl);
+            const ciudades = await response.json();
+            const ciudadesList = document.getElementById('ciudades-list');
+            ciudadesList.innerHTML = '';
+            ciudades.forEach(ciudad => {
+                const li = document.createElement('li');
+                li.textContent = ciudad.nombre; // Cambia 'nombre' si tu objeto tiene otro campo
+                ciudadesList.appendChild(li);
+            });
+        }
+
+        // Función para crear una nueva ciudad
+        async function createCiudad() {
+            const nombre = document.getElementById('nombre-ciudad').value;
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nombre }) // Cambia según la estructura de tu objeto
+            });
+            if (response.ok) {
+                listCiudades(); // Actualiza la lista
+            } else {
+                alert('Error al agregar ciudad');
+            }
+        }
+
+        // Función para actualizar una ciudad
+        async function updateCiudad() {
+            const id = document.getElementById('id-ciudad').value;  
+            const nuevoNombre = document.getElementById('nuevo-nombre-ciudad').value;
+            const response = await fetch(`${apiUrl}/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nombre: nuevoNombre }) // Cambia según la estructura de tu objeto
+            });
+            if (response.ok) {
+                listCiudades(); // Actualiza la lista
+            } else {
+                alert('Error al actualizar ciudad');
+            }
+        }
+
+        // Función para eliminar una ciudad
+        async function deleteCiudad() {
+            const id = document.getElementById('eliminar-id-ciudad').value;
+            const response = await fetch(`${apiUrl}/${id}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                listCiudades(); // Actualiza la lista
+            } else {
+                alert('Error al eliminar ciudad');
+            }
+        }
+
+        // Carga inicial de ciudades
+        listCiudades();
+    </script>
+
+    <script>
+        const apiUrl = 'http://localhost:8080/api/v1/paises';
+    
+        // Función para listar países
+        async function listPaises() {
+            const response = await fetch(apiUrl);
+            const paises = await response.json();
+            const paisesList = document.getElementById('paises-list');
+            paisesList.innerHTML = '';
+            paises.forEach(pais => {
+                const li = document.createElement('li');
+                li.textContent = pais.nombre; // Cambia 'nombre' si tu objeto tiene otro campo
+                paisesList.appendChild(li);
+            });
+        }
+    
+        // Función para crear un nuevo país
+        async function createPais() {
+            const nombre = document.getElementById('nombre-pais').value;
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nombre }) // Cambia según la estructura de tu objeto
+            });
+            if (response.ok) {
+                listPaises(); // Actualiza la lista
+            } else {
+                alert('Error al agregar país');
+            }
+        }
+    
+        // Función para actualizar un país
+        async function updatePais() {
+            const id = document.getElementById('id-pais').value;  
+            const nuevoNombre = document.getElementById('nuevo-nombre-pais').value;
+            const response = await fetch(`${apiUrl}/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nombre: nuevoNombre }) // Cambia según la estructura de tu objeto
+            });
+            if (response.ok) {
+                listPaises(); // Actualiza la lista
+            } else {
+                alert('Error al actualizar país');
+            }
+        }
+    
+        // Función para eliminar un país
+        async function deletePais() {
+            const id = document.getElementById('eliminar-id-pais').value;
+            const response = await fetch(`${apiUrl}/${id}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                listPaises(); // Actualiza la lista
+            } else {
+                alert('Error al eliminar país');
+            }
+        }
+    
+        // Carga inicial de países
+        listPaises();
+    </script>
+
+    <script>
+        const apiUrl = 'http://localhost:8080/api/v1/regiones';
+    
+        // Función para listar regiones
+        async function listRegiones() {
+            const response = await fetch(apiUrl);
+            const regiones = await response.json();
+            const regionesList = document.getElementById('regiones-list');
+            regionesList.innerHTML = '';
+            regiones.forEach(region => {
+                const li = document.createElement('li');
+                li.textContent = region.nombre; // Cambia 'nombre' si tu objeto tiene otro campo
+                regionesList.appendChild(li);
+            });
+        }
+    
+        // Función para crear una nueva región
+        async function createRegion() {
+            const nombre = document.getElementById('nombre-region').value;
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nombre }) // Cambia según la estructura de tu objeto
+            });
+            if (response.ok) {
+                listRegiones(); // Actualiza la lista
+            } else {
+                alert('Error al agregar región');
+            }
+        }
+    
+        // Función para actualizar una región
+        async function updateRegion() {
+            const id = document.getElementById('id-region').value;  
+            const nuevoNombre = document.getElementById('nuevo-nombre-region').value;
+            const response = await fetch(`${apiUrl}/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nombre: nuevoNombre }) // Cambia según la estructura de tu objeto
+            });
+            if (response.ok) {
+                listRegiones(); // Actualiza la lista
+            } else {
+                alert('Error al actualizar región');
+            }
+        }
+    
+        // Función para eliminar una región
+        async function deleteRegion() {
+            const id = document.getElementById('eliminar-id-region').value;
+            const response = await fetch(`${apiUrl}/${id}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                listRegiones(); // Actualiza la lista
+            } else {
+                alert('Error al eliminar región');
+            }
+        }
+    
+        // Carga inicial de regiones
+        listRegiones();
+    </script>
+
+</body>
+</html>

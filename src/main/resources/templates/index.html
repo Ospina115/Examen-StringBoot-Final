@@ -1,15 +1,33 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="../static/registro/style.css">n
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
-    <title>Vite + Lit</title>
-  </head>
-  <body>
-    <my-element></my-element>
-    <script type="module" src="../static/registro/script.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Login</title>
+    <link rel="stylesheet" href="/api/v1/static/login/style.css">
+</head>
+<body>
+    <div>
+        <form method="post" action="/api/v1/login">
+            <h1>Ingreso</h1>
+            <p>
+                <label for="username" class="sr-only">Usuario</label>
+                <input type="text" id="username" name="username" placeholder="Usuario" required autofocus>
+            </p>    
+            <p>
+                <label for="password" class="sr-only">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            </p>
+            <input name="csrf" type="hidden" value="mUaWtpH2ivcqw01dIEsus-lEGWFHbsmthYx8FQ5g-2V8exzqiWjhfSS75QH8X5pQmYahNxxNAB1Wf2A5ukfdjhYxtqmwNpE" />
+            
+
+            <button type="submit" class="ingresar">Ingresar</button>
+
+            <!-- Enlace para crear una cuenta -->
+            <a href="/api/v1/registro/index.html" class="crear">Crear Cuenta</a>
+        </form>
+    </div>
+</body>
 </html>
