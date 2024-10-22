@@ -19,16 +19,19 @@ public class DireccionImpl implements IDireccionService{
         return (List<Direccion>) repository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<Direccion> findById(int id) {
         return repository.findById(id);
     }
 
+    @Transactional
     @Override
     public Direccion save(Direccion direccion) {
         return repository.save(direccion);
     }
 
+    @Transactional
     @Override
     public Optional<Direccion> update(int id, Direccion direccion) {
         Optional<Direccion> direccionOptional = repository.findById(id);
@@ -43,6 +46,7 @@ public class DireccionImpl implements IDireccionService{
         return direccionOptional;
     }
 
+    @Transactional
     @Override
     public Optional<Direccion> delete(int id) {
         Optional<Direccion> productoOptional = repository.findById(id);
