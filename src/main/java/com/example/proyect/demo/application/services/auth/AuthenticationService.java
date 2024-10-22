@@ -5,12 +5,18 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.example.proyect.demo.application.services.IUserService;
 import com.example.proyect.demo.domain.dto.RegisterUser;
 import com.example.proyect.demo.domain.dto.UserDto;
+import com.example.proyect.demo.domain.dto.auth.AuthenticationRequest;
+import com.example.proyect.demo.domain.dto.auth.AuthenticationResponse;
 import com.example.proyect.demo.domain.entities.User;
+import com.example.proyect.demo.infrastructure.utils.exeptions.ObjectNotFoundException;
 
 @Service
 public class AuthenticationService {
@@ -47,8 +53,34 @@ public class AuthenticationService {
 
         return extraClaims;
     }
+    public AuthenticationResponse login(AuthenticationRequest autRequest) {
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+            autRequest.getUsername(), autRequest.getPassword()
+        );
+        authenticationManager.authenticate(authentication);
 
-    // public AuthenticationResponse login(AuthenticationRequest autRequest) {
+        UserDetails user = userService.findOneByUsername(autRequest.getUsername()).get();
+        String jwt  = jwtService.generateToken(user, generateExtraClaims((User) user));
+        AuthenticationResponse authRsp = new AuthenticationResponse();
 
-    // }
+        return authRsp;
+    }
+
+    public boolean validateToken(String jwt) {
+        try{
+            jwtService.extractUsername(jwt);
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public User findLoggedInUser() {
+        UsernamePasswordAuthenticationToken auth = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        String username = (String) auth.getPrincipal();
+
+        return userService.findOneByUsername(username)
+                .orElseThrow(() -> new ObjectNotFoundException("User not found. Username: " + username));
+    }
 }
