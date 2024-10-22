@@ -22,16 +22,19 @@ public class EstadoOrdenImpl implements IEstadoOrdenService {
         return (List<EstadoOrden>) repository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<EstadoOrden> findById(int id) {
         return repository.findById(id);
     } 
 
+    @Transactional
     @Override
     public EstadoOrden save(EstadoOrden estadoOrden) {
         return repository.save(estadoOrden);
     }
 
+    @Transactional
     @Override
     public Optional<EstadoOrden> update(int id, EstadoOrden estadoOrden) {
         Optional<EstadoOrden> estadoOrdenOptional = repository.findById(id);
@@ -43,6 +46,7 @@ public class EstadoOrdenImpl implements IEstadoOrdenService {
         return estadoOrdenOptional;
     }
 
+    @Transactional
     @Override
     public Optional<EstadoOrden> delete(int id) {
         Optional<EstadoOrden> productoOptional = repository.findById(id);

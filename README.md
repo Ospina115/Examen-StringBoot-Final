@@ -252,3 +252,7 @@ Este sistema permitirá a **PrestService** gestionar de manera eficiente los ser
 - Capturar el token al iniciar sesión y solo mostrar opciones de búsqueda si este token existe
 - Eliminar el token si se da la opción de cerrar sesión.
 - Cerrar la sesión eliminando el token si al hacer una consulta el token deja de ser válido.
+
+# Base de datos 📄
+
+![Base de datos](/src/main/resources/static/img/prestservice.png)

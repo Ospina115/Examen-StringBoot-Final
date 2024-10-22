@@ -42,7 +42,7 @@ public class CiudadImpl implements ICiudadService {
             Ciudad ciudadDb = ciudadOld.orElseThrow();
 
             ciudadDb.setNombre(ciudad.getNombre());
-            ciudadDb.setRegion(ciudadDb.getRegion());
+            ciudadDb.setRegion(ciudad.getRegion());
 
             return Optional.of(ciudadRepository.save(ciudad));
         }

@@ -13,44 +13,43 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.example.proyect.demo.application.services.IPaisService;
-import com.example.proyect.demo.domain.entities.Pais;
-
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.proyect.demo.application.services.IOrdenServicioService;
+import com.example.proyect.demo.domain.entities.OrdenServicio;
+
 @RestController
-@RequestMapping("/paises")
-public class PaisController {
+@RequestMapping("/ordtrabajo")
+public class OrdenTrabajoController {
 
     @Autowired
-    private IPaisService paisService;
+    private IOrdenServicioService ordenServicioService;
 
     @GetMapping
-    public List<Pais> List() {
-        return paisService.findAll();
+    public List<OrdenServicio> List() {
+        return ordenServicioService.findAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> view(@PathVariable int id) {
-        Optional<Pais> paisOptional = paisService.findById(id);
+        Optional<OrdenServicio> paisOptional = ordenServicioService.findById(id);
         return paisOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping()
-    public ResponseEntity<?> create(@RequestBody Pais pais) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(paisService.save(pais));
+    public ResponseEntity<?> create(@RequestBody OrdenServicio ordenServicio) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(ordenServicioService.save(ordenServicio));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable int id, @RequestBody Pais pais) {
-        Optional<Pais> updatedProduct = paisService.update(id, pais);
+    public ResponseEntity<?> update(@PathVariable int id, @RequestBody OrdenServicio ordenServicio) {
+        Optional<OrdenServicio> updatedProduct = ordenServicioService.update(id, ordenServicio);
         return updatedProduct.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable int id) {
-        Optional<Pais> productosDelete = paisService.delete(id);
+        Optional<OrdenServicio> productosDelete = ordenServicioService.delete(id);
         return productosDelete.map(c -> ResponseEntity.ok().build()).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
