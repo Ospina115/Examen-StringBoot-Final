@@ -28,9 +28,10 @@ header {
     width: 20%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
     background-color: black;
+    height:100%;
+    overflow: scroll;
 }
 .right{
     background-color: aliceblue;
@@ -40,9 +41,10 @@ header {
     align-items: center;
 }
 
-button {
+.left button {
     font-size: 17px;
-    padding: 1em 2.7em;
+    padding: 40px 10px;
+    margin: 15px 10px;
     font-weight: 500;
     color: black;
     border: none;
@@ -50,7 +52,19 @@ button {
     overflow: hidden;
     border-radius: 0.6em;
     cursor: pointer;
+    width: 70%;
+}
+.right button{
+    font-size: 17px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.6em;
+    cursor: pointer;
     width: 50%;
+    padding: 10px;
 }
 .label {
 position: relative;
