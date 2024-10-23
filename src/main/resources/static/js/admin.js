@@ -1160,6 +1160,146 @@ async deleteTipoPersona() {
     await this.loadTiposPersona(); // Recargar la lista después de eliminar
 }
 }
+class PersonaInsumoForm extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+        <div class="form">
+            <div>
+                <h2>Lista de Personas Insumo</h2>
+                <ul id="personas-insumo-list"></ul>
+            </div>
+            <div>
+                <h2>Agregar Persona Insumo</h2>
+                <input type="text" id="nombre-persona-insumo" placeholder="Nombre de la persona insumo" />
+                <button onclick="createPersonaInsumo()">Agregar</button>
+            </div>
+            <div>
+                <h2>Actualizar Persona Insumo</h2>
+                <input type="number" id="id-persona-insumo" placeholder="ID de la persona insumo" />
+                <input type="text" id="nuevo-nombre-persona-insumo" placeholder="Nuevo nombre de la persona insumo" />
+                <button onclick="updatePersonaInsumo()">Actualizar</button>
+            </div>
+            <div>
+                <h2>Eliminar Persona Insumo</h2>
+                <input type="number" id="eliminar-id-persona-insumo" placeholder="ID de la persona insumo" />
+                <button onclick="deletePersonaInsumo()">Eliminar</button>
+            </div>
+        </div>
+        `;
+
+        this.loadPersonasInsumo();
+    }
+
+    async loadPersonasInsumo() {
+        const response = await fetch('http://localhost:8080/perinsumo'); // URL de la API
+        const personasInsumo = await response.json();
+        const personasInsumoList = this.querySelector('#personas-insumo-list');
+        personasInsumoList.innerHTML = personasInsumo.map(persona => `<li>${persona.nombre} (ID: ${persona.id})</li>`).join('');
+    }
+
+    async createPersonaInsumo() {
+        const nombre = this.querySelector('#nombre-persona-insumo').value;
+        await fetch('http://localhost:8080/perinsumo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nombre: nombre }) // Asegúrate de que el objeto tenga la estructura correcta
+        });
+        await this.loadPersonasInsumo(); // Recargar la lista después de agregar
+    }
+
+    async updatePersonaInsumo() {
+        const id = this.querySelector('#id-persona-insumo').value;
+        const nuevoNombre = this.querySelector('#nuevo-nombre-persona-insumo').value;
+        await fetch(`http://localhost:8080/perinsumo/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nombre: nuevoNombre }) // Asegúrate de que el objeto tenga la estructura correcta
+        });
+        await this.loadPersonasInsumo(); // Recargar la lista después de actualizar
+    }
+
+    async deletePersonaInsumo() {
+        const id = this.querySelector('#eliminar-id-persona-insumo').value;
+        await fetch(`http://localhost:8080/perinsumo/${id}`, {
+            method: 'DELETE'
+        });
+        await this.loadPersonasInsumo(); // Recargar la lista después de eliminar
+    }
+}
+class ServicioForm extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+        <div class="form">
+            <div>
+                <h2>Lista de Servicios</h2>
+                <ul id="servicios-list"></ul>
+            </div>
+            <div>
+                <h2>Agregar Servicio</h2>
+                <input type="text" id="nombre-servicio" placeholder="Nombre del servicio" />
+                <button onclick="createServicio()">Agregar</button>
+            </div>
+            <div>
+                <h2>Actualizar Servicio</h2>
+                <input type="number" id="id-servicio" placeholder="ID del servicio" />
+                <input type="text" id="nuevo-nombre-servicio" placeholder="Nuevo nombre del servicio" />
+                <button onclick="updateServicio()">Actualizar</button>
+            </div>
+            <div>
+                <h2>Eliminar Servicio</h2>
+                <input type="number" id="eliminar-id-servicio" placeholder="ID del servicio" />
+                <button onclick="deleteServicio()">Eliminar</button>
+            </div>
+        </div>
+        `;
+
+        this.loadServicios();
+    }
+
+    async loadServicios() {
+        const response = await fetch('http://localhost:8080/Servicio'); // URL de la API
+        const servicios = await response.json();
+        const serviciosList = this.querySelector('#servicios-list');
+        serviciosList.innerHTML = servicios.map(servicio => `<li>${servicio.nombre} (ID: ${servicio.id})</li>`).join('');
+    }
+
+    async createServicio() {
+        const nombre = this.querySelector('#nombre-servicio').value;
+        await fetch('http://localhost:8080/Servicio', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nombre: nombre })
+        });
+        await this.loadServicios(); // Recargar la lista después de agregar
+    }
+
+    async updateServicio() {
+        const id = this.querySelector('#id-servicio').value;
+        const nuevoNombre = this.querySelector('#nuevo-nombre-servicio').value;
+        await fetch(`http://localhost:8080/Servicio/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nombre: nuevoNombre })
+        });
+        await this.loadServicios(); // Recargar la lista después de actualizar
+    }
+
+    async deleteServicio() {
+        const id = this.querySelector('#eliminar-id-servicio').value;
+        await fetch(`http://localhost:8080/Servicio/${id}`, {
+            method: 'DELETE'
+        });
+        await this.loadServicios(); // Recargar la lista después de eliminar
+    }
+}
 
 // DEFINICION DE LOS COMPONENTES DEL FORMULARIO
 customElements.define('ciudad-form', CiudadForm);
@@ -1178,6 +1318,9 @@ customElements.define('sucursal-form', SucursalForm);
 customElements.define('tipo-email-form', TipoEmailForm);
 customElements.define('tipo-empresa-form', TipoEmpresaForm);
 customElements.define('tipo-persona-form', TipoPersonaForm);
+
+customElements.define('persona-insumo-form', PersonaInsumoForm);
+customElements.define('servicio-form',  ServicioForm);
 
 document.addEventListener("DOMContentLoaded", function() { 
     const rightSection = document.querySelector('.right'); 
@@ -1236,6 +1379,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     break;
                 case 'Tipo Persona': 
                     rightSection.appendChild(document.createElement('tipo-persona-form')); 
+                    break;
+                case 'Persona Insumo':
+                    rightSection.appendChild(document.createElement('persona-insumo-form'));
+                    break;
+                case 'Servicio':
+                    rightSection.appendChild(document.createElement('servicio-form'));
                     break;
                 // TODOS LOS CASOS DE LOS COMPONENTES YA DEFINIDOS
             } 

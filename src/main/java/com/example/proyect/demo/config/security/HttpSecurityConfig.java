@@ -47,7 +47,7 @@ public class HttpSecurityConfig {
         private static void buildRequestMatchers(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry authReqConfig) {
         authReqConfig.requestMatchers(HttpMethod.POST, "/customers").permitAll();
         authReqConfig.requestMatchers(HttpMethod.GET, "/auth/validate-token").permitAll();
-        authReqConfig.requestMatchers(HttpMethod.POST, "/auth//authenticate").permitAll();
+        authReqConfig.requestMatchers(HttpMethod.POST, "/auth/authenticate").permitAll();
         authReqConfig.requestMatchers(HttpMethod.GET, "/empresas")
                 .hasAnyRole(Role.ADMINISTRATOR.name(), Role.ASSISTANT_ADMINISTRATOR.name());
 
