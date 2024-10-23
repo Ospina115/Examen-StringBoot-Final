@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.util.matcher.RegexRequestMatcher;
 
 import com.example.proyect.demo.config.security.filter.JwtAuthenticationFilter;
-import com.example.proyect.demo.infrastructure.utils.enums.Role;
+import com.example.proyect.demo.infrastructure.utils.enums.RoleEnum;
 
 @Configuration
 @EnableWebSecurity
@@ -49,22 +49,22 @@ public class HttpSecurityConfig {
         authReqConfig.requestMatchers(HttpMethod.GET, "/auth/validate-token").permitAll();
         authReqConfig.requestMatchers(HttpMethod.POST, "/auth//authenticate").permitAll();
         authReqConfig.requestMatchers(HttpMethod.GET, "/empresas")
-                .hasAnyRole(Role.ADMINISTRATOR.name(), Role.ASSISTANT_ADMINISTRATOR.name());
+                .hasAnyRole(RoleEnum.ADMINISTRATOR.name(), RoleEnum.ASSISTANT_ADMINISTRATOR.name());
 
         // authReqConfig.requestMatchers(HttpMethod.GET, "/empresas/{id}")
         //         .hasAnyRole(Role.ADMINISTRATOR.name(), Role.ASSISTANT_ADMINISTRATOR.name());
 
         authReqConfig.requestMatchers(RegexRequestMatcher.regexMatcher(HttpMethod.GET, "/empresas/[0-9]*"))
-                .hasAnyRole(Role.ADMINISTRATOR.name(), Role.ASSISTANT_ADMINISTRATOR.name());
+                .hasAnyRole(RoleEnum.ADMINISTRATOR.name(), RoleEnum.ASSISTANT_ADMINISTRATOR.name());
 
         authReqConfig.requestMatchers(HttpMethod.POST, "/empresas")
-                .hasRole(Role.ADMINISTRATOR.name());
+                .hasRole(RoleEnum.ADMINISTRATOR.name());
 
         authReqConfig.requestMatchers(HttpMethod.PUT, "/empreasas/{id}")
-                .hasAnyRole(Role.ADMINISTRATOR.name(), Role.ASSISTANT_ADMINISTRATOR.name());
+                .hasAnyRole(RoleEnum.ADMINISTRATOR.name(), RoleEnum.ASSISTANT_ADMINISTRATOR.name());
 
         authReqConfig.requestMatchers(HttpMethod.PUT, "/empresas/{id}")
-                .hasRole(Role.ADMINISTRATOR.name());
+                .hasRole(RoleEnum.ADMINISTRATOR.name());
 
         authReqConfig.requestMatchers(HttpMethod.POST, "/customers").permitAll();
         authReqConfig.requestMatchers(HttpMethod.POST, "/auth/authenticate").permitAll();

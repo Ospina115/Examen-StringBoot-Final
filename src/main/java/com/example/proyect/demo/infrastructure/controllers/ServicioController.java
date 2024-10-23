@@ -19,7 +19,7 @@ import com.example.proyect.demo.application.services.IServicioService;
 import com.example.proyect.demo.domain.entities.Servicio;
 
 @RestController
-@RequestMapping("/Servicio")
+@RequestMapping("/servicios")
 public class ServicioController {
 
     @Autowired

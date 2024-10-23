@@ -43,7 +43,7 @@ public class TipoPersonaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(tipoPersonaService.save(tipoPersona));
     }
     
-   @PutMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable int id, @RequestBody TipoPersona tipoPersona) {
         Optional<TipoPersona> updateProduct = tipoPersonaService.update(id, tipoPersona);
         return updateProduct.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());

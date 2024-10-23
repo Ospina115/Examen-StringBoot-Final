@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.proyect.demo.domain.dto.UserDto;
-import com.example.proyect.demo.domain.entities.User;
+import com.example.proyect.demo.domain.entities.security.User;
 
 @Service
 public interface IUserService {

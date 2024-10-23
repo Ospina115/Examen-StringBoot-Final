@@ -11,7 +11,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.example.proyect.demo.application.services.IUserService;
 import com.example.proyect.demo.application.services.auth.JwtService;
-import com.example.proyect.demo.domain.entities.User;
+import com.example.proyect.demo.domain.entities.security.User;
 import com.example.proyect.demo.infrastructure.utils.exeptions.ObjectNotFoundException;
 
 import org.springframework.util.StringUtils;
