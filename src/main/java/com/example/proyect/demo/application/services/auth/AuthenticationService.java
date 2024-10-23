@@ -61,7 +61,9 @@ public class AuthenticationService {
 
         UserDetails user = userService.findOneByUsername(autRequest.getUsername()).get();
         String jwt  = jwtService.generateToken(user, generateExtraClaims((User) user));
+        
         AuthenticationResponse authRsp = new AuthenticationResponse();
+        authRsp.setJwt(jwt);
 
         return authRsp;
     }
