@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-public class JwtAuthenticationFilter  extends OncePerRequestFilter{
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
     private JwtService jwtService;
@@ -29,12 +29,12 @@ public class JwtAuthenticationFilter  extends OncePerRequestFilter{
     @Autowired
     private IUserService userService;
 
-
     @SuppressWarnings("null")
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-            throws ServletException, IOException {
-        
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
+       
+
         //1. Obtener encabezado http llamado Authorization
         String authorizationHeader = request.getHeader("Authorization");//Bearer jwt
         if(!StringUtils.hasText(authorizationHeader) || !authorizationHeader.startsWith("Bearer ")){

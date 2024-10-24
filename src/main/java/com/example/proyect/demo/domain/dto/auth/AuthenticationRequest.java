@@ -2,8 +2,7 @@ package com.example.proyect.demo.domain.dto.auth;
 
 import java.io.Serializable;
 
-public class AuthenticationRequest implements Serializable{
-
+public class AuthenticationRequest implements Serializable {
     private String username;
     private String password;
     public String getUsername() {
@@ -18,5 +17,5 @@ public class AuthenticationRequest implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
-
+    
 }

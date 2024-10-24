@@ -3,7 +3,7 @@
 -- CREACIÓN DE MODULOS
 
 
-INSERT INTO module (name, base_path) VALUES ('CLIENTES', '/customers');
+INSERT INTO module (name, base_path) VALUES ('CLIENTE', '/clientes');
 INSERT INTO module (name, base_path) VALUES ('AUTH', '/auth');
 INSERT INTO module (name, base_path) VALUES ('PAIS', '/paises');
 INSERT INTO module (name, base_path) VALUES ('REGION', '/regiones');
@@ -30,12 +30,12 @@ INSERT INTO module (name, base_path) VALUES ('TIPOPERSONA', '/tipopersona');
 -- CREACIÓN DE OPERACIONES
 
 
-INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ALL_CUSTOMERS','', 'GET', false, 1);
+INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ALL_CLIENTES','', 'GET', true, 1);
 INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('REGISTER_ONE','', 'POST', true, 1);
 
 INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('AUTHENTICATE','/authenticate', 'POST', true, 2);
 INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('VALIDATE-TOKEN','/validate-token', 'GET', true, 2);
-INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_MY_PROFILE','/profile','GET', false, 2);
+INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_MY_PROFILE','/profile','GET', true, 2);
 
 INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ALL_PAISES','', 'GET', false, 3);
 INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ONE_PAIS','/[0-9]*', 'GET', false, 3);
@@ -179,7 +179,7 @@ INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('
 -- CREACIÓN DE ROLES
 
 
-INSERT INTO role (name) VALUES ('CLIENTE');
+INSERT INTO role (name) VALUES ('CUSTUMER');
 INSERT INTO role (name) VALUES ('ADMINISTRADOR');
 INSERT INTO role (name) VALUES ('JEFE_RECURSOS_HUMANOS');
 INSERT INTO role (name) VALUES ('JEFE_BODEGA');
@@ -207,3 +207,11 @@ INSERT INTO granted_permission (role_id, operation_id) VALUES (2, 11);
 INSERT INTO granted_permission (role_id, operation_id) VALUES (2, 12);
 INSERT INTO granted_permission (role_id, operation_id) VALUES (2, 13);
 INSERT INTO granted_permission (role_id, operation_id) VALUES (2, 14);
+
+
+-- CREACIÓN DE USUARIOS
+
+
+INSERT INTO "user" (username, name, password, role_id) VALUES ('keniayh', 'Kenia Hernandez', '$2a$10$ywh1O2EwghHmFIMGeHgsx.9lMw5IXpg4jafeFS.Oi6nFv0181gHli', 1);
+INSERT INTO "user" (username, name, password, role_id) VALUES ('jmpardo', 'Jose Manuel', '$2a$10$V29z7/qC9wpHfzRMxGOHye5RMAxCid2/MzJalk0dsiA3zZ9CJfub.', 2);
+INSERT INTO "user" (username, name, password, role_id) VALUES ('jjplata', 'Juan Jose', '$2a$10$ecBf3t7Vk9QEsA2wMmvDR.Pp.22p.3EwuNLnSX8OBcoo1bHxWhEia', 3);

@@ -20,9 +20,9 @@ public class Role {
     private String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
     private List<GrantedPermission> permissions;
-
+    
     public Long getId() {
         return id;
     }

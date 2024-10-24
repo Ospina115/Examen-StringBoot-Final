@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Operation {
@@ -18,6 +20,10 @@ public class Operation {
     private String httpMethod;
 
     private boolean permitAll;
+
+    @ManyToOne
+    @JoinColumn(name = "module_id")
+    private Module module;
 
     public Long getId() {
         return id;
@@ -58,4 +64,14 @@ public class Operation {
     public void setPermitAll(boolean permitAll) {
         this.permitAll = permitAll;
     }
+
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
+    }
+
+    
 }

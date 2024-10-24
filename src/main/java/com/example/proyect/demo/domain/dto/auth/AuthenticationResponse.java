@@ -12,4 +12,5 @@ public class AuthenticationResponse implements Serializable{
     public void setJwt(String jwt) {
         this.jwt = jwt;
     }
+    
 }

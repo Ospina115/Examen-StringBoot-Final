@@ -14,6 +14,7 @@ import com.example.proyect.demo.domain.dto.ApiError;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.stream.Collectors;
 
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 

@@ -17,6 +17,7 @@ import com.example.proyect.demo.infrastructure.utils.exeptions.ObjectNotFoundExc
 
 @Service
 public class UserImpl implements IUserService {
+
     @Autowired
     private UserRepository userRepository;
 
@@ -56,4 +57,5 @@ public class UserImpl implements IUserService {
         }
 
     }
+
 }
