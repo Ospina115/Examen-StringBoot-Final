@@ -13,6 +13,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.access.intercept.RequestAuthorizationContext;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.example.proyect.demo.config.security.filter.JwtAuthenticationFilter;
 
@@ -36,24 +39,39 @@ public class HttpSecurityConfig {
 
         @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        SecurityFilterChain filterChain = http
+                .csrf(csrfConfig -> csrfConfig.disable())
+                .cors(corsConfig -> corsConfig.configurationSource(corsConfigurationSource())) // Agregar CORS
+                .sessionManagement(sessMagConfig -> 
+                sessMagConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+                .authenticationProvider(daoAuthProvider)
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .authorizeHttpRequests(authReqConfig -> {
+                authReqConfig
+                        .requestMatchers("/api/v1/auth/authenticate").permitAll() // Permitir acceso público a este endpoint
+                        .anyRequest().access(authorizationManager);
+                })
+                .exceptionHandling(exceptionConfig -> {
+                exceptionConfig.authenticationEntryPoint(authenticationEntryPoint);
+                exceptionConfig.accessDeniedHandler(accessDeniedHandler);
+                })
+                .build();
 
-                SecurityFilterChain filterChain = http
-                                .csrf(csrfConfig -> csrfConfig.disable())
-                                .sessionManagement(
-                                                sessMagConfig -> sessMagConfig
-                                                                .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                                .authenticationProvider(daoAuthProvider)
-                                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                                .authorizeHttpRequests( authReqConfig -> {
-                                        authReqConfig.anyRequest().access(authorizationManager);
-                                } )
-                                .exceptionHandling( exceptionConfig -> {
-                                        exceptionConfig.authenticationEntryPoint(authenticationEntryPoint);
-                                        exceptionConfig.accessDeniedHandler(accessDeniedHandler);
-                                })
-                                .build();
+        return filterChain;
+        }
 
-                return filterChain;
+        // Configurar CORS
+        @Bean
+        public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowCredentials(true);
+        configuration.addAllowedOrigin("http://127.0.0.1:5500"); // Cambia esto si es necesario
+        configuration.addAllowedHeader("*");
+        configuration.addAllowedMethod("*");
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
         }
 
         // private static void buildRequestMatchers(

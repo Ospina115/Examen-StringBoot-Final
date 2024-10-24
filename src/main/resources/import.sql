@@ -179,7 +179,7 @@ INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('
 -- CREACIÓN DE ROLES
 
 
-INSERT INTO role (name) VALUES ('CUSTUMER');
+INSERT INTO role (name) VALUES ('CLEINTE');
 INSERT INTO role (name) VALUES ('ADMINISTRADOR');
 INSERT INTO role (name) VALUES ('JEFE_RECURSOS_HUMANOS');
 INSERT INTO role (name) VALUES ('JEFE_BODEGA');
