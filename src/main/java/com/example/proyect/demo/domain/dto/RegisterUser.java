@@ -2,7 +2,7 @@ package com.example.proyect.demo.domain.dto;
 
 import java.io.Serializable;
 
-public class RegisterUser implements Serializable{
+public class RegisterUser implements Serializable {
     private Long id;
     private String username;
     private String name;
@@ -38,4 +38,6 @@ public class RegisterUser implements Serializable{
     public void setJwt(String jwt) {
         this.jwt = jwt;
     }
+    
+
 }

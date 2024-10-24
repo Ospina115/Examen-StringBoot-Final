@@ -1,6 +1,6 @@
 package com.example.proyect.demo.infrastructure.utils.enums;
 
-public enum RolePermission {
+public enum RolePermissionEnum {
     READ_ALL_EMPRESAS,
     READ_ONE_EMPRESA,
     CREATE_ONE_EMPRESA,

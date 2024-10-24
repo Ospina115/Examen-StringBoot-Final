@@ -23,14 +23,15 @@ public class SecurityBeansInjector {
     private UserRepository userRepository;
 
     @Bean
-    public AuthenticationManager authenticationManager() throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
+    public AuthenticationManager authenticationManager() throws Exception{
+       return authenticationConfiguration.getAuthenticationManager();
     }
+
     @Bean
-    public AuthenticationProvider authenticationProvider() {
+    public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider authenticationStrategy = new DaoAuthenticationProvider();
-        authenticationStrategy.setPasswordEncoder(passwordEncoder());
-        authenticationStrategy.setUserDetailsService(userDetailsService());
+        authenticationStrategy.setPasswordEncoder( passwordEncoder() );
+        authenticationStrategy.setUserDetailsService( userDetailsService() );
 
         return authenticationStrategy;
     }

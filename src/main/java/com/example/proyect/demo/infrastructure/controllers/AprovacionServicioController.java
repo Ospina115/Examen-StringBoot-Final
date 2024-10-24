@@ -41,7 +41,7 @@ public class AprovacionServicioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(aprovacionServicioService.save(aprovacionServicio));
     }
 
-      @PutMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable int id, @RequestBody AprovacionServicio aprovacionServicio) {
         Optional<AprovacionServicio> updateProduct = aprovacionServicioService.update(id, aprovacionServicio);
         return updateProduct.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());

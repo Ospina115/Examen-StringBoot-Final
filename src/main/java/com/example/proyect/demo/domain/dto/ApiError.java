@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+
 public class ApiError {
     private String backendMessage;
     private String message;
@@ -52,4 +53,6 @@ public class ApiError {
     public void setMethod(String method) {
         this.method = method;
     }
+
+    
 }

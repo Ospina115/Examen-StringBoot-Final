@@ -4,6 +4,7 @@ import java.io.Serializable;
 import jakarta.validation.constraints.Size;
 
 public class UserDto implements Serializable {
+
     @Size(min = 4)
     private String name;
     private String username;
@@ -11,7 +12,6 @@ public class UserDto implements Serializable {
     private String password;
     @Size(min = 8)
     private String repeatedPassword;
-
     public String getName() {
         return name;
     }

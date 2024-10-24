@@ -1,6 +1,9 @@
 package com.example.proyect.demo.application.services.auth;
 
 import java.util.*;
+
+import javax.crypto.SecretKey;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -11,7 +14,7 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 
-import javax.crypto.SecretKey;
+
 
 @Service
 public class JwtService {
@@ -69,3 +72,4 @@ public class JwtService {
     }
 
 }
+

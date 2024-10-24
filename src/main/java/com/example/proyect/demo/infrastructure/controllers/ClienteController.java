@@ -15,8 +15,8 @@ import com.example.proyect.demo.domain.dto.UserDto;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/customers")
-public class CustomerController {
+@RequestMapping("/clientes")
+public class ClienteController {
     @Autowired
     private AuthenticationService authenticationService;
 

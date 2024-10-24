@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.proyect.demo.application.services.auth.AuthenticationService;
 import com.example.proyect.demo.domain.dto.auth.AuthenticationRequest;
 import com.example.proyect.demo.domain.dto.auth.AuthenticationResponse;
-import com.example.proyect.demo.domain.entities.User;
+import com.example.proyect.demo.domain.entities.security.User;
 
 import jakarta.validation.Valid;
 
