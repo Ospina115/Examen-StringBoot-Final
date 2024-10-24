@@ -32,8 +32,8 @@ public class PersonaInsumoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> view(@PathVariable int id){
-          Optional<PersonaInsumo> personaOptional = personaInsumoService.findById(id);
-          return personaOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        Optional<PersonaInsumo> personaOptional = personaInsumoService.findById(id);
+        return personaOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping()
